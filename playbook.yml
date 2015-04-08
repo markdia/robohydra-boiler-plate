@@ -1,0 +1,32 @@
+---
+- hosts: all
+  sudo: true
+  tasks:
+  - name: update nodesource
+    shell: curl -sL https://deb.nodesource.com/setup | sudo bash -
+  - name: update apt cache
+    apt: update_cache=yes
+  - name: install required apt-get packages
+    apt: name={{ item }} state=present
+    with_items:
+      - nodejs
+      - build-essential
+      - libfontconfig
+  - name: Install "coffee-script" node.js package globally.
+    npm: name=coffee-script global=yes
+
+  - name: Install bower package globally
+    npm: name=bower global=yes
+
+  - name: Install RoboHydra package
+    npm: name=robohydra state=present global=yes
+
+  - name: Install Gulp Globally
+    npm: name=gulp global=yes
+
+  - name: Install Gulp for DevDependencies
+    npm: name={{ item }} global=no state=present production=no path=/vagrant/
+    with_items:
+      - gulp
+      - gulp-util
+      - gulp-jshint

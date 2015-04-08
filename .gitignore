@@ -1,0 +1,5 @@
+#ignore vagrant files
+/.vagrant/*
+/.idea/*
+npm-debug.log
+/node-modules/*
