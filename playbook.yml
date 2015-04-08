@@ -20,13 +20,3 @@
 
   - name: Install RoboHydra package
     npm: name=robohydra state=present global=yes
-
-  - name: Install Gulp Globally
-    npm: name=gulp global=yes
-
-  - name: Install Gulp for DevDependencies
-    npm: name={{ item }} global=no state=present production=no path=/vagrant/
-    with_items:
-      - gulp
-      - gulp-util
-      - gulp-jshint

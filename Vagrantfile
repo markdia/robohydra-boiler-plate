@@ -6,7 +6,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # set hard forward port
   config.vm.network "forwarded_port", guest: 80, host: 8080
-  config.vm.network "forwarded_port", guest: 22, host: 2200
+  config.vm.network "forwarded_port", guest: 83, host: 8083
 
   #setup ansible
   config.vm.provision :ansible do |ansible|
